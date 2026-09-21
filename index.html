@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JL Variedades – Cascavel-CE</title>
+<script>
+  (function() {
+    var saved = localStorage.getItem('jl-theme');
+    if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  })();
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   /* ===== VARIÁVEIS ===== */
@@ -15,9 +21,25 @@
     --claro:   #fff8f5;
     --cinza:   #6b5b5f;
     --branco:  #ffffff;
+    --superficie: #ffffff;
+    --texto:   #1a0a0f;
+    --texto-claro: #ffffff;
     --verde-wp:#25d366;
     --r:       .75rem;
     --shadow:  0 8px 32px rgba(26,10,15,.15);
+    --transicao-tema: background .3s ease, color .3s ease, border-color .3s ease;
+  }
+
+  [data-theme="dark"] {
+    --claro:   #150a0d;
+    --superficie: #211217;
+    --cinza:   #b09499;
+    --texto:   #f7ece9;
+    --shadow:  0 8px 32px rgba(0,0,0,.4);
+  }
+
+  body, .card, .sobre-info-item, .review-card, header, .mobile-menu {
+    transition: var(--transicao-tema);
   }
 
   /* ===== RESET ===== */
@@ -25,8 +47,8 @@
   html { scroll-behavior: smooth; }
   body {
     font-family: 'DM Sans', sans-serif;
-    background: var(--claro);
-    color: var(--escuro);
+    background: var(--escuro);
+    color: var(--texto);
     overflow-x: hidden;
   }
   img { display: block; max-width: 100%; }
@@ -50,6 +72,7 @@
   .logo span { color: var(--rosa); }
 
   /* nav desktop */
+  .nav-wrap { display: flex; align-items: center; gap: 1.5rem; }
   nav ul {
     list-style: none;
     display: flex; gap: 2rem;
@@ -63,6 +86,23 @@
     transition: color .25s;
   }
   nav a:hover { color: var(--rosa); }
+
+  /* theme toggle */
+  .theme-toggle {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.25);
+    background: rgba(255,255,255,.08);
+    color: var(--branco);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background .2s;
+    flex-shrink: 0;
+  }
+  .theme-toggle:hover { background: rgba(255,255,255,.18); }
+  .theme-toggle .icon-moon { display: none; }
+  [data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+  [data-theme="dark"] .theme-toggle .icon-moon { display: block; }
 
   /* hamburger */
   .hamburger {
@@ -197,7 +237,7 @@
     font-size: clamp(1.8rem, 4vw, 2.6rem);
     line-height: 1.2;
     margin-bottom: 1rem;
-    color: var(--escuro);
+    color: var(--texto);
   }
   .section-desc {
     color: var(--cinza);
@@ -215,7 +255,7 @@
   }
 
   /* ===== SOBRE ===== */
-  #sobre { background: var(--branco); }
+  #sobre { background: var(--superficie); }
   .sobre-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -268,7 +308,7 @@
 
   /* ===== GALERIAS ===== */
   #variedades { background: var(--claro); }
-  #roupas     { background: var(--branco); }
+  #roupas     { background: var(--superficie); }
 
   .gallery-grid {
     display: grid;
@@ -276,13 +316,18 @@
     gap: 1.2rem;
   }
 
+  .gallery-grid-compact {
+    grid-template-columns: repeat(2, minmax(260px, 360px));
+    justify-content: center;
+  }
+
   /* CARD */
   .card {
     border-radius: 1rem;
     overflow: hidden;
     box-shadow: var(--shadow);
-    background: var(--branco);
-    transition: transform .3s, box-shadow .3s;
+    background: var(--superficie);
+    transition: transform .3s, box-shadow .3s, background .3s ease;
     cursor: pointer;
   }
   .card:hover { transform: translateY(-6px); box-shadow: 0 16px 44px rgba(26,10,15,.2); }
@@ -340,7 +385,8 @@
   .stars-container { display: flex; flex-direction: column; align-items: center; gap: .6rem; }
   .stars { font-size: 2.8rem; letter-spacing: .15rem; color: var(--dourado); }
   .stars-label { color: rgba(255,255,255,.6); font-size: .9rem; }
-  .review-cards { display: grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr)); gap: 1.2rem; margin-top: 3rem; }
+  .review-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-top: 3rem; }
+  .review-card { flex: 1 1 240px; max-width: 320px; }
   .review-card {
     background: rgba(255,255,255,.06);
     border: 1px solid rgba(255,255,255,.1);
@@ -370,7 +416,7 @@
   .btn-contato .icon { font-size: 1.4rem; }
   .btn-contato.wp    { background: var(--verde-wp); color: var(--branco); }
   .btn-contato.mail  { background: var(--rosa2);   color: var(--branco); }
-  .btn-contato small { display: block; font-size: .75rem; opacity: .8; font-weight: 300; }
+  .btn-contato small { display: block; font-size: .8rem; opacity: .95; font-weight: 400; margin-top: .15rem; }
 
   .contato-map {
     background: linear-gradient(135deg, var(--escuro), #3a1020);
@@ -517,17 +563,23 @@
 <!-- ===== HEADER ===== -->
 <header>
   <div class="logo">JL<span>Variedades</span></div>
-  <nav>
-    <ul>
-      <li><a href="#inicio">Início</a></li>
-      <li><a href="#variedades">Variedades</a></li>
-      <li><a href="#roupas">Roupas</a></li>
-      <li><a href="#contato">Contato</a></li>
-    </ul>
-  </nav>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-wrap">
+    <nav>
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#variedades">Variedades</a></li>
+        <li><a href="#roupas">Roupas</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo escuro">
+      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
 <!-- Mobile Menu -->
@@ -608,7 +660,7 @@
     <div class="divider"></div>
     <p class="section-desc" style="margin-bottom:2.5rem">Kits presentes, pelúcias, perfumes, acessórios e muito mais para presentear quem você ama em datas especiais.</p>
 
-    <div class="gallery-grid">
+    <div class="gallery-grid gallery-grid-compact">
       <!-- Card 1 -->
       <div class="card">
         <div class="card-img">
@@ -825,6 +877,19 @@
 
 <!-- ===== JAVASCRIPT ===== -->
 <script>
+  /* --- MODO ESCURO --- */
+  const themeToggle = document.getElementById('themeToggle');
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('jl-theme', 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('jl-theme', 'dark');
+    }
+  });
+
   /* --- MENU HAMBÚRGUER --- */
   const hamburger   = document.getElementById('hamburger');
   const mobileMenu  = document.getElementById('mobileMenu');
