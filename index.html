@@ -666,7 +666,7 @@
       <!-- Card 1 -->
       <div class="card">
         <div class="card-img">
-          <img src="IMG_20260427_094819.jpg" alt="Variedades e presentes JL Variedades" loading="lazy">
+          <img src="fotos/IMG_20260427_094819-card.webp" data-full="fotos/IMG_20260427_094819.webp" alt="Variedades e presentes JL Variedades" loading="lazy">
           <div class="card-overlay"><span>Kits Presente</span></div>
         </div>
         <div class="card-body">
@@ -677,7 +677,7 @@
       <!-- Card 2 -->
       <div class="card">
         <div class="card-img">
-          <img src="IMG_20260427_094811.jpg" alt="Variedades JL Variedades" loading="lazy">
+          <img src="fotos/IMG_20260427_094811-card.webp" data-full="fotos/IMG_20260427_094811.webp" alt="Variedades JL Variedades" loading="lazy">
           <div class="card-overlay"><span>Variedades</span></div>
         </div>
         <div class="card-body">
@@ -702,7 +702,7 @@
       <!-- Primeiras 4 sempre visíveis -->
       <div class="card">
         <div class="card-img">
-          <img src="IMG_20251231_001251.jpg" alt="Roupas JL Variedades" loading="lazy">
+          <img src="fotos/IMG_20251231_001251-card.webp" data-full="fotos/IMG_20251231_001251.webp" alt="Roupas JL Variedades" loading="lazy">
           <div class="card-overlay"><span>Moda Feminina</span></div>
         </div>
         <div class="card-body"><h3>Vestidos &amp; Looks</h3><p>Estilo e elegância para você</p></div>
@@ -710,7 +710,7 @@
 
       <div class="card">
         <div class="card-img">
-          <img src="IMG_20251231_001301.jpg" alt="Roupas JL Variedades" loading="lazy">
+          <img src="fotos/IMG_20251231_001301-card.webp" data-full="fotos/IMG_20251231_001301.webp" alt="Roupas JL Variedades" loading="lazy">
           <div class="card-overlay"><span>Coleção Verão</span></div>
         </div>
         <div class="card-body"><h3>Coleção Verão</h3><p>Peças leves e coloridas</p></div>
@@ -718,7 +718,7 @@
 
       <div class="card">
         <div class="card-img">
-          <img src="IMG_20251231_001256.jpg" alt="Roupas Masculinas JL Variedades" loading="lazy">
+          <img src="fotos/IMG_20251231_001256-card.webp" data-full="fotos/IMG_20251231_001256.webp" alt="Roupas Masculinas JL Variedades" loading="lazy">
           <div class="card-overlay"><span>Moda Masculina</span></div>
         </div>
         <div class="card-body"><h3>Moda Masculina</h3><p>Camisetas e shorts variados</p></div>
@@ -726,7 +726,7 @@
 
       <div class="card">
         <div class="card-img">
-          <img src="IMG_20251231_101338.jpg" alt="Roupas JL Variedades" loading="lazy">
+          <img src="fotos/IMG_20251231_101338-card.webp" data-full="fotos/IMG_20251231_101338.webp" alt="Roupas JL Variedades" loading="lazy">
           <div class="card-overlay"><span>Novidades</span></div>
         </div>
         <div class="card-body"><h3>Novidades</h3><p>Últimas peças chegando</p></div>
@@ -735,7 +735,7 @@
       <!-- Outras 4 – ocultas inicialmente -->
       <div class="card hidden-card">
         <div class="card-img">
-          <img src="IMG_20260321_211742.jpg" alt="Roupas JL Variedades" loading="lazy">
+          <img src="fotos/IMG_20260321_211742-card.webp" data-full="fotos/IMG_20260321_211742.webp" alt="Roupas JL Variedades" loading="lazy">
           <div class="card-overlay"><span>Looks Completos</span></div>
         </div>
         <div class="card-body"><h3>Looks Completos</h3><p>Combinações prontas para você</p></div>
@@ -743,7 +743,7 @@
 
       <div class="card hidden-card">
         <div class="card-img">
-          <img src="IMG_20251231_001305.jpg" alt="Roupas JL Variedades" loading="lazy">
+          <img src="fotos/IMG_20251231_001305-card.webp" data-full="fotos/IMG_20251231_001305.webp" alt="Roupas JL Variedades" loading="lazy">
           <div class="card-overlay"><span>Moda Casual</span></div>
         </div>
         <div class="card-body"><h3>Moda Casual</h3><p>Conforto no dia a dia</p></div>
@@ -751,7 +751,7 @@
 
       <div class="card hidden-card">
         <div class="card-img">
-          <img src="IMG_20260321_211754.jpg" alt="Roupas JL Variedades" loading="lazy">
+          <img src="fotos/IMG_20260321_211754-card.webp" data-full="fotos/IMG_20260321_211754.webp" alt="Roupas JL Variedades" loading="lazy">
           <div class="card-overlay"><span>Moda &amp; Estilo</span></div>
         </div>
         <div class="card-body"><h3>Moda &amp; Estilo</h3><p>Peças selecionadas com cuidado</p></div>
@@ -759,7 +759,7 @@
 
       <div class="card hidden-card">
         <div class="card-img">
-          <img src="IMG_20251231_001507.jpg" alt="Roupas JL Variedades" loading="lazy">
+          <img src="fotos/IMG_20251231_001507-card.webp" data-full="fotos/IMG_20251231_001507.webp" alt="Roupas JL Variedades" loading="lazy">
           <div class="card-overlay"><span>Coleção Especial</span></div>
         </div>
         <div class="card-body"><h3>Coleção Especial</h3><p>Para ocasiões memoráveis</p></div>
@@ -972,7 +972,7 @@
 
   function openLightbox(imgEl) {
     lastFocusedEl = document.activeElement;
-    lightboxImg.src = imgEl.getAttribute('src');
+    lightboxImg.src = imgEl.dataset.full || imgEl.getAttribute('src'); // versão grande só ao ampliar
     lightboxImg.alt = imgEl.getAttribute('alt') || '';
     lightbox.classList.add('open');
     lightbox.setAttribute('aria-hidden', 'false');
