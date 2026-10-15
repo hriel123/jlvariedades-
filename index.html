@@ -424,6 +424,7 @@
     color: var(--cinza); margin-bottom: .2rem;
   }
   .info-val   { font-weight: 600; font-size: .96rem; }
+  .info-ref   { font-size: .8rem; color: var(--cinza); margin-top: .2rem; }
 
   .sobre-visual {
     position: relative;
@@ -689,6 +690,19 @@
     font-size: 1.1rem;
   }
   .map-detail strong { color: var(--branco); display: block; font-size: .92rem; font-weight: 600; }
+  .como-chegar {
+    display: flex; width: max-content; align-items: center; gap: .4rem;
+    margin-top: .7rem;
+    padding: .45rem .95rem;
+    border-radius: 999px;
+    background: var(--rosa2);
+    color: var(--branco);
+    font-size: .82rem; font-weight: 600;
+    transition: background .2s;
+  }
+  .como-chegar:hover { background: #b8243f; }
+  .como-chegar .ico { transition: transform .2s; }
+  .como-chegar:hover .ico { transform: translateX(3px); }
 
   /* ===== FOOTER ===== */
   footer {
@@ -987,7 +1001,8 @@
           <div class="info-icon"><svg class="ico"><use href="#i-pin"/></svg></div>
           <div>
             <p class="info-label">Endereço</p>
-            <p class="info-val">Bairro Mutirão, Cascavel – CE</p>
+            <p class="info-val">R. Maj. Eng. José Goiânia Primo, 2932<br>Bairro Mutirão, Cascavel – CE</p>
+            <p class="info-ref">Perto do Batalhão do Raio e da praça</p>
           </div>
         </div>
         <div class="sobre-info-item">
@@ -1204,7 +1219,8 @@
 
       <div class="contato-map reveal" style="--d:.12s">
         <iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.8296259188486!2d-38.2505904!3d-4.1391702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b9af1f6b8b8b8b%3A0xb8b8b8b8b8b8b8b8!2s4%C2%B008&#39;21.0%22S%2038%C2%B014&#39;52.9%22W!5e0!3m2!1spt-BR!2sbr!4v1748880000000!5m2!1spt-BR!2sbr"
+  src="https://maps.google.com/maps?hl=pt-BR&amp;q=R.+Maj.+Eng.+Jos%C3%A9+Goi%C3%A2nia+Primo,+2932+-+Cascavel,+CE&amp;z=17&amp;output=embed"
+  title="Mapa da JL Variedades"
   width="100%"
   height="250"
   style="border:0; border-radius: 1rem;"
@@ -1215,7 +1231,9 @@
         <div class="map-detail">
           <div class="map-item">
             <span class="map-ico"><svg class="ico"><use href="#i-pin"/></svg></span>
-            <div><strong>Como nos encontrar</strong>Bairro Mutirão<br>Cascavel – CE</div>
+            <div><strong>Como nos encontrar</strong>R. Maj. Eng. José Goiânia Primo, 2932<br>Bairro Mutirão, Cascavel – CE<br>Perto do Batalhão do Raio e da praça
+              <a class="como-chegar" href="https://www.google.com/maps/dir/?api=1&amp;destination=R.+Maj.+Eng.+Jos%C3%A9+Goi%C3%A2nia+Primo,+2932+-+Cascavel,+CE" target="_blank">Como chegar <svg class="ico"><use href="#i-seta"/></svg></a>
+            </div>
           </div>
           <div class="map-item">
             <span class="map-ico"><svg class="ico"><use href="#i-tel"/></svg></span>
@@ -1242,7 +1260,7 @@
     <a href="#avaliacoes">Avaliações</a>
     <a href="#contato">Contato</a>
   </div>
-  <p>Bairro Mutirão, Cascavel – CE &nbsp;|&nbsp; <a href="tel:+5585988746915">(85) 98874-6915</a></p>
+  <p>R. Maj. Eng. José Goiânia Primo, 2932, Bairro Mutirão, Cascavel – CE &nbsp;|&nbsp; <a href="tel:+5585988746915">(85) 98874-6915</a></p>
   <p><a class="email" href="mailto:JJSJACILDA14@GMAIL.COM">JJSJACILDA14@GMAIL.COM</a></p>
   <p class="footer-copy">© 2026 JL Variedades. Todos os direitos reservados.</p>
 </footer>
