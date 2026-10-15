@@ -19,7 +19,7 @@ Site da JL Variedades, loja de moda e variedades no Bairro Mutirão, em Cascavel
 
 ## Recursos
 
-- Fotos ampliadas ao clicar (lightbox), fechando com clique fora ou Esc
+- Fotos ampliadas ao clicar (lightbox), com setas (ou deslizando no celular) para passar as fotos da seção, fechando com clique fora ou Esc
 - Modo escuro, com a escolha salva no navegador
 - Botão flutuante do WhatsApp
 - Menu para celular e layout responsivo
