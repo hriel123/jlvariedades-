@@ -36,6 +36,7 @@ index.html   página (estilos e scripts principais embutidos)
 style.css    estilos
 script.js    interações (como o "Ver mais peças")
 fotos/       fotos dos produtos: <nome>-card.webp (cards) e <nome>.webp (ampliada)
+fonts/       fontes Playfair Display e DM Sans (licença SIL OFL 1.1)
 docs/        imagens deste README
 ```
 
