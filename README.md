@@ -32,9 +32,7 @@ HTML, CSS e JavaScript puros, sem frameworks. Hospedado no GitHub Pages.
 ## Estrutura
 
 ```
-index.html   página (estilos e scripts principais embutidos)
-style.css    estilos
-script.js    interações (como o "Ver mais peças")
+index.html   página, com os estilos e os scripts embutidos
 fotos/       fotos dos produtos: <nome>-500.webp e <nome>-card.webp (cards) e <nome>.webp (ampliada)
 fonts/       fontes Playfair Display e DM Sans (licença SIL OFL 1.1)
 docs/        imagens deste README
