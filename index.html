@@ -897,6 +897,19 @@
     text-align: center;
   }
   .lightbox-caption small { color: rgba(255,255,255,.45); font-size: .8rem; margin-left: .6rem; }
+  .lightbox-wp {
+    display: inline-flex; align-items: center; gap: .55rem;
+    padding: .75rem 1.4rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #25d366, #18b552);
+    color: var(--branco);
+    font-size: .95rem; font-weight: 700;
+    box-shadow: 0 14px 30px -14px rgba(37,211,102,.8);
+    text-shadow: 0 1px 2px rgba(0,60,25,.45);
+    transition: transform .2s;
+  }
+  .lightbox-wp .ico { font-size: 1.2rem; }
+  .lightbox-wp:hover { transform: translateY(-2px); }
   .lightbox-close {
     position: absolute;
     top: -18px;
@@ -953,6 +966,11 @@
     }
     .lightbox-prev { left: calc(50% - 56px); }
     .lightbox-next { right: calc(50% - 56px); }
+  }
+  @media (max-height: 500px) {
+    .lightbox { padding-top: .75rem; padding-bottom: .75rem; }
+    .lightbox-img { max-height: calc(100vh - 8rem); }
+    .lightbox-close { top: 0; right: 0; }
   }
 
   /* ===== RESPONSIVO ===== */
@@ -1362,6 +1380,7 @@
     <button class="lightbox-close" id="lightboxClose" aria-label="Fechar imagem">×</button>
     <img class="lightbox-img" id="lightboxImg" src="" alt="">
     <p class="lightbox-caption" id="lightboxCaption" aria-live="polite" aria-atomic="true"></p>
+    <a class="lightbox-wp" id="lightboxWp" href="https://wa.me/5585988746915" target="_blank"><svg class="ico ico-fill"><use href="#i-wa"/></svg> Perguntar no WhatsApp</a>
   </div>
   <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Próxima foto"><svg class="ico"><use href="#i-dir"/></svg></button>
 </div>
@@ -1521,6 +1540,7 @@
   const lightboxCaption = document.getElementById('lightboxCaption');
   const lightboxPrev    = document.getElementById('lightboxPrev');
   const lightboxNext    = document.getElementById('lightboxNext');
+  const lightboxWp      = document.getElementById('lightboxWp');
   let   lastFocusedEl   = null;
   let   fotos           = [];
   let   fotoAtual       = 0;
@@ -1540,6 +1560,7 @@
     }
     lightboxImg.alt = imgEl.getAttribute('alt') || '';
     lightboxCaption.textContent = titulo ? titulo.textContent : '';
+    lightboxWp.href = 'https://wa.me/5585988746915?text=' + encodeURIComponent('Olá, vim pelo site! Gostaria de saber mais sobre a foto "' + lightboxCaption.textContent + '" da JL Variedades.');
     if (fotos.length > 1) {
       const contador = document.createElement('small');
       contador.textContent = (fotoAtual + 1) + ' / ' + fotos.length;
@@ -1605,7 +1626,7 @@
     if (!lightbox.classList.contains('open')) return;
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'Tab') {
-      const focaveis = [lightboxPrev, lightboxClose, lightboxNext].filter(b => !b.hidden);
+      const focaveis = [lightboxPrev, lightboxClose, lightboxWp, lightboxNext].filter(b => !b.hidden);
       const i = focaveis.indexOf(document.activeElement);
       const proximo = e.shiftKey ? (i <= 0 ? focaveis.length - 1 : i - 1) : (i === focaveis.length - 1 ? 0 : i + 1);
       e.preventDefault();
