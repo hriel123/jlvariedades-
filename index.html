@@ -1508,7 +1508,15 @@
     fotoAtual = (i + fotos.length) % fotos.length;
     const imgEl  = fotos[fotoAtual];
     const titulo = imgEl.closest('.card').querySelector('.card-body h3');
-    lightboxImg.src = imgEl.dataset.full || imgEl.getAttribute('src'); // versão grande só ao ampliar
+    const grande = imgEl.dataset.full || imgEl.getAttribute('src'); // versão grande só ao ampliar
+    if (imgEl.complete && imgEl.naturalWidth) {
+      lightboxImg.srcset = imgEl.currentSrc + ' 0.1x';
+      const carregando = new Image();
+      carregando.onload = () => { if (fotos[fotoAtual] === imgEl && lightbox.classList.contains('open')) lightboxImg.srcset = grande; };
+      carregando.src = grande;
+    } else {
+      lightboxImg.srcset = grande;
+    }
     lightboxImg.alt = imgEl.getAttribute('alt') || '';
     lightboxCaption.textContent = titulo ? titulo.textContent : '';
     if (fotos.length > 1) {
@@ -1537,7 +1545,7 @@
     // pequena espera para não "piscar" a imagem antiga durante o fade-out
     setTimeout(() => {
       if (!lightbox.classList.contains('open')) {
-        lightboxImg.src = '';
+        lightboxImg.srcset = '';
       }
     }, 300);
     if (lastFocusedEl) lastFocusedEl.focus();
