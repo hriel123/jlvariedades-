@@ -416,6 +416,7 @@
 
   /* ===== SECTION BASE ===== */
   section { padding: clamp(4.5rem, 9vw, 6.5rem) clamp(1.25rem, 4vw, 2.5rem); }
+  section:focus { outline: none; }
   .container { max-width: 1140px; margin: 0 auto; }
   .section-label {
     font-size: .74rem;
@@ -1050,7 +1051,7 @@
 
 <main>
 <!-- ===== HERO ===== -->
-<section class="hero" id="inicio">
+<section class="hero" id="inicio" tabindex="-1">
   <div class="hero-deco deco1"></div>
   <div class="hero-deco deco2"></div>
   <div class="hero-inner">
@@ -1074,7 +1075,7 @@
 </section>
 
 <!-- ===== SOBRE ===== -->
-<section id="sobre">
+<section id="sobre" tabindex="-1">
   <div class="container">
     <div class="sobre-grid">
       <div class="reveal">
@@ -1122,7 +1123,7 @@
 </section>
 
 <!-- VARIEDADES -->
-<section id="variedades">
+<section id="variedades" tabindex="-1">
   <div class="container">
     <p class="section-label">Seção Especial</p>
     <h2 class="section-title">Variedades &amp; Presentes</h2>
@@ -1157,7 +1158,7 @@
 </section>
 
 <!-- ROUPAS -->
-<section id="roupas">
+<section id="roupas" tabindex="-1">
   <div class="container">
     <p class="section-label">Coleção</p>
     <h2 class="section-title">Moda Feminina &amp; Masculina</h2>
@@ -1244,7 +1245,7 @@
 </section>
 
 <!-- ===== AVALIAÇÕES ===== -->
-<section id="avaliacoes">
+<section id="avaliacoes" tabindex="-1">
   <div class="container" style="text-align:center">
     <p class="section-label" style="color:var(--dourado)">Clientes Satisfeitos</p>
     <h2 class="section-title">O que dizem sobre a gente</h2>
@@ -1274,7 +1275,7 @@
 </section>
 
 <!-- ===== CONTATO ===== -->
-<section id="contato">
+<section id="contato" tabindex="-1">
   <div class="container">
     <div class="contato-grid">
       <div class="reveal">
@@ -1446,12 +1447,16 @@
   /* --- SCROLL SUAVE PARA LINKS INTERNOS --- */
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
-      e.preventDefault();
-      const target = document.querySelector(link.getAttribute('href'));
+      const hash   = link.getAttribute('href');
+      const target = document.querySelector(hash);
       if (target) {
+        e.preventDefault();
         const offset = 70;
         const top    = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
+        const reduzir = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top, behavior: reduzir ? 'auto' : 'smooth' });
+        history.pushState(null, '', hash);
+        target.focus({ preventScroll: true });
       }
     });
   });
