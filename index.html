@@ -78,6 +78,7 @@
   :root {
     --rosa:    #e8516a;
     --rosa2:   #c9314c;
+    --rosa-texto: #c9314c;
     --dourado: #c9922c;
     --escuro:  #1a0a0f;
     --vinho:   #3a1020;
@@ -98,6 +99,7 @@
   }
 
   [data-theme="dark"] {
+    --rosa-texto: var(--rosa);
     --claro:   #150a0d;
     --superficie: #211217;
     --cinza:   #b09499;
@@ -415,7 +417,7 @@
     font-weight: 600;
     letter-spacing: .16em;
     text-transform: uppercase;
-    color: var(--rosa);
+    color: var(--rosa-texto);
     margin-bottom: .7rem;
   }
   .section-title {
@@ -619,7 +621,7 @@
   #btn-ver-mais {
     background: transparent;
     border: 1.5px solid var(--rosa);
-    color: var(--rosa);
+    color: var(--rosa-texto);
     padding: .85rem 1.9rem;
     border-radius: 999px;
     font-size: .92rem; font-weight: 600;
@@ -789,6 +791,7 @@
   }
   footer a { color: var(--rosa); transition: color .2s; }
   footer a:hover { color: #f27d91; }
+  footer a[href^="tel:"] { text-decoration: underline; text-underline-offset: 3px; }
   .footer-logo {
     font-family: 'Playfair Display', serif;
     font-size: 1.6rem; font-weight: 700; color: var(--branco); margin-bottom: .75rem;
@@ -803,7 +806,7 @@
   .footer-copy {
     max-width: 1140px; margin: 2rem auto 0; padding-top: 1.5rem;
     border-top: 1px solid rgba(255,255,255,.06);
-    font-size: .75rem; color: rgba(255,255,255,.3);
+    font-size: .75rem; color: rgba(255,255,255,.5);
   }
 
   /* ===== WHATSAPP FLOAT ===== */
