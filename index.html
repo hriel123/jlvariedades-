@@ -1416,6 +1416,8 @@
   function verMais() {
     const hidden = document.querySelectorAll('.hidden-card');
     const btnTexto = document.getElementById('btn-texto');
+    const btn = document.getElementById('btn-ver-mais');
+    const topoAntes = btn.getBoundingClientRect().top;
 
     expanded = !expanded;
 
@@ -1437,7 +1439,8 @@
     });
 
     btnTexto.textContent = expanded ? 'Ver menos'  : 'Ver mais peças';
-    document.getElementById('btn-ver-mais').classList.toggle('aberto', expanded);
+    btn.classList.toggle('aberto', expanded);
+    if (!expanded) window.scrollBy({ top: btn.getBoundingClientRect().top - topoAntes, behavior: 'instant' });
   }
 
   /* --- SCROLL SUAVE PARA LINKS INTERNOS --- */
