@@ -837,6 +837,10 @@
     animation: onda 2.4s ease-out infinite;
   }
   .wp-float:hover { transform: scale(1.08); box-shadow: 0 14px 32px -6px rgba(37,211,102,.8); }
+  .wp-float { transition: transform .25s, box-shadow .25s, opacity .25s, visibility .25s; }
+  @media (max-width: 900px) {
+    .wp-float.sobre-botoes { opacity: 0; visibility: hidden; }
+  }
   @keyframes onda {
     0%   { transform: scale(1);   opacity: .7; }
     100% { transform: scale(1.6); opacity: 0; }
@@ -1482,6 +1486,13 @@
     topos = Array.from(secoes, s => s.getBoundingClientRect().top + window.scrollY);
     aoRolar();
   }).observe(document.body);
+
+  /* --- BOTÃO FLUTUANTE LONGE DOS BOTÕES DO TOPO --- */
+  if ('IntersectionObserver' in window) {
+    const wpFloat = document.querySelector('.wp-float');
+    new IntersectionObserver(([en]) => wpFloat.classList.toggle('sobre-botoes', en.isIntersecting))
+      .observe(document.querySelector('.hero-btns'));
+  }
 
   /* --- ANIMAÇÃO AO APARECER NA TELA --- */
   const revelar = document.querySelectorAll('.reveal');
