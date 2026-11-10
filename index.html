@@ -1054,10 +1054,10 @@
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#inicio"     onclick="closeMenu()">Início <svg class="ico"><use href="#i-seta"/></svg></a>
-  <a href="#variedades" onclick="closeMenu()">Variedades <svg class="ico"><use href="#i-seta"/></svg></a>
-  <a href="#roupas"     onclick="closeMenu()">Roupas <svg class="ico"><use href="#i-seta"/></svg></a>
-  <a href="#contato"    onclick="closeMenu()">Contato <svg class="ico"><use href="#i-seta"/></svg></a>
+  <a href="#inicio">Início <svg class="ico"><use href="#i-seta"/></svg></a>
+  <a href="#variedades">Variedades <svg class="ico"><use href="#i-seta"/></svg></a>
+  <a href="#roupas">Roupas <svg class="ico"><use href="#i-seta"/></svg></a>
+  <a href="#contato">Contato <svg class="ico"><use href="#i-seta"/></svg></a>
 </div>
 
 <main>
@@ -1244,7 +1244,7 @@
     </div><!-- /gallery -->
 
     <div class="ver-mais-wrap">
-      <button id="btn-ver-mais" onclick="verMais()">
+      <button id="btn-ver-mais">
         <span id="btn-icon"><svg class="ico"><use href="#i-baixo"/></svg></span>
         <span id="btn-texto">Ver mais peças</span>
       </button>
@@ -1405,6 +1405,7 @@
     mobileMenu.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
   }
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
   document.addEventListener('keydown', e => {
     if (e.key !== 'Escape' || !mobileMenu.classList.contains('open')) return;
@@ -1452,6 +1453,7 @@
     btn.classList.toggle('aberto', expanded);
     if (!expanded) window.scrollBy({ top: btn.getBoundingClientRect().top - topoAntes, behavior: 'instant' });
   }
+  document.getElementById('btn-ver-mais').addEventListener('click', verMais);
 
   /* --- SCROLL SUAVE PARA LINKS INTERNOS --- */
   document.querySelectorAll('a[href^="#"]').forEach(link => {
