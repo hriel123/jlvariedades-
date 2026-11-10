@@ -1466,16 +1466,22 @@
   const navLinks = document.querySelectorAll('nav a[href^="#"]');
   const secoes   = document.querySelectorAll('section[id]');
 
+  let topos = [];
+
   function aoRolar() {
     header.classList.toggle('rolou', window.scrollY > 20);
+    const linha = window.scrollY + window.innerHeight * .35;
     let atual = '';
-    secoes.forEach(s => {
-      if (s.getBoundingClientRect().top <= window.innerHeight * .35) atual = s.id;
+    secoes.forEach((s, i) => {
+      if (topos[i] <= linha) atual = s.id;
     });
     navLinks.forEach(a => a.classList.toggle('ativo', a.getAttribute('href') === '#' + atual));
   }
   window.addEventListener('scroll', aoRolar, { passive: true });
-  aoRolar();
+  new ResizeObserver(() => {
+    topos = Array.from(secoes, s => s.getBoundingClientRect().top + window.scrollY);
+    aoRolar();
+  }).observe(document.body);
 
   /* --- ANIMAÇÃO AO APARECER NA TELA --- */
   const revelar = document.querySelectorAll('.reveal');
