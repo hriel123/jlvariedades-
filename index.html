@@ -79,6 +79,7 @@
     --rosa:    #e8516a;
     --rosa2:   #c9314c;
     --rosa-texto: #c9314c;
+    --foco:    #a87618;
     --dourado: #c9922c;
     --escuro:  #1a0a0f;
     --vinho:   #3a1020;
@@ -100,6 +101,7 @@
 
   [data-theme="dark"] {
     --rosa-texto: var(--rosa);
+    --foco:    var(--dourado);
     --claro:   #150a0d;
     --superficie: #211217;
     --cinza:   #b09499;
@@ -128,7 +130,8 @@
   a  { text-decoration: none; color: inherit; }
   button { font-family: inherit; }
   ::selection { background: rgba(232,81,106,.28); }
-  a:focus-visible, button:focus-visible { outline: 2px solid var(--dourado); outline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--foco); outline-offset: 3px; }
+  header, .mobile-menu, .hero, #avaliacoes, footer, .contato-map, .lightbox { --foco: var(--dourado); }
 
   .ico {
     width: 1em; height: 1em; flex-shrink: 0;
