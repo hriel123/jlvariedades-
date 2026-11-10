@@ -578,6 +578,8 @@
     transition: transform .6s cubic-bezier(.2,.7,.2,1);
   }
   .card:hover .card-img img { transform: scale(1.06); }
+  .card:has(.card-img:focus-visible) { outline: 2px solid var(--foco); outline-offset: 3px; }
+  @supports selector(:has(*)) { .card-img:focus-visible { outline: none; } }
   .card-img::after {
     content: '';
     position: absolute; top: .75rem; right: .75rem;
@@ -1130,7 +1132,7 @@
     <div class="gallery-grid gallery-grid-compact reveal">
       <!-- Card 1 -->
       <div class="card">
-        <div class="card-img">
+        <div class="card-img" role="button" tabindex="0" aria-label="Ampliar foto: Kits &amp; Presentes">
           <img src="fotos/IMG_20260427_094819-card.webp" srcset="fotos/IMG_20260427_094819-500.webp 500w, fotos/IMG_20260427_094819-card.webp 753w" sizes="(max-width: 768px) calc(50vw - 26px), 400px" data-full="fotos/IMG_20260427_094819.webp" alt="Vitrine de vidro com ursinhos de pelúcia em caixas de presente, cosméticos e bonecos decorativos" loading="lazy">
           <div class="card-overlay"><span>Kits Presente</span></div>
         </div>
@@ -1141,7 +1143,7 @@
       </div>
       <!-- Card 2 -->
       <div class="card">
-        <div class="card-img">
+        <div class="card-img" role="button" tabindex="0" aria-label="Ampliar foto: Variedades Gerais">
           <img src="fotos/IMG_20260427_094811-card.webp" srcset="fotos/IMG_20260427_094811-500.webp 500w, fotos/IMG_20260427_094811-card.webp 1000w" sizes="(max-width: 768px) calc(66vw - 35px), 533px" data-full="fotos/IMG_20260427_094811.webp" alt="Cestas de presente embrulhadas com laço, caixas com ursinhos e acessórios de celular na parede" loading="lazy">
           <div class="card-overlay"><span>Variedades</span></div>
         </div>
@@ -1166,7 +1168,7 @@
 
       <!-- Primeiras 4 sempre visíveis -->
       <div class="card">
-        <div class="card-img">
+        <div class="card-img" role="button" tabindex="0" aria-label="Ampliar foto: Vestidos &amp; Looks">
           <img src="fotos/IMG_20251231_001251-card.webp" srcset="fotos/IMG_20251231_001251-500.webp 500w, fotos/IMG_20251231_001251-card.webp 753w" sizes="(max-width: 768px) calc(50vw - 26px), (max-width: 1111px) 380px, 270px" data-full="fotos/IMG_20251231_001251.webp" alt="Três manequins de costas com looks brancos: camiseta com calça preta, calça pantalona e vestido de um ombro só" loading="lazy">
           <div class="card-overlay"><span>Moda Feminina</span></div>
         </div>
@@ -1174,7 +1176,7 @@
       </div>
 
       <div class="card">
-        <div class="card-img">
+        <div class="card-img" role="button" tabindex="0" aria-label="Ampliar foto: Coleção Verão">
           <img src="fotos/IMG_20251231_001301-card.webp" srcset="fotos/IMG_20251231_001301-500.webp 500w, fotos/IMG_20251231_001301-card.webp 753w" sizes="(max-width: 768px) calc(50vw - 26px), (max-width: 1111px) 380px, 270px" data-full="fotos/IMG_20251231_001301.webp" alt="Camisetas branca, mostarda e amarela penduradas acima de bermudas bege, verde e cinza" loading="lazy">
           <div class="card-overlay"><span>Coleção Verão</span></div>
         </div>
@@ -1182,7 +1184,7 @@
       </div>
 
       <div class="card">
-        <div class="card-img">
+        <div class="card-img" role="button" tabindex="0" aria-label="Ampliar foto: Moda Masculina">
           <img src="fotos/IMG_20251231_001256-card.webp" srcset="fotos/IMG_20251231_001256-500.webp 500w, fotos/IMG_20251231_001256-card.webp 753w" sizes="(max-width: 768px) calc(50vw - 26px), (max-width: 1111px) 380px, 270px" data-full="fotos/IMG_20251231_001256.webp" alt="Parede com camisetas amarela e laranja, polo branca, camisa verde e bermudas bege e vermelha" loading="lazy">
           <div class="card-overlay"><span>Moda Masculina</span></div>
         </div>
@@ -1190,7 +1192,7 @@
       </div>
 
       <div class="card">
-        <div class="card-img">
+        <div class="card-img" role="button" tabindex="0" aria-label="Ampliar foto: Novidades">
           <img src="fotos/IMG_20251231_101338-card.webp" srcset="fotos/IMG_20251231_101338-500.webp 500w, fotos/IMG_20251231_101338-card.webp 753w" sizes="(max-width: 768px) calc(50vw - 26px), (max-width: 1111px) 380px, 270px" data-full="fotos/IMG_20251231_101338.webp" alt="Vitrine com manequins de vestido branco de um ombro só, conjunto branco e camiseta branca com calça escura" loading="lazy">
           <div class="card-overlay"><span>Novidades</span></div>
         </div>
@@ -1199,7 +1201,7 @@
 
       <!-- Outras 4 – ocultas inicialmente -->
       <div class="card hidden-card">
-        <div class="card-img">
+        <div class="card-img" role="button" tabindex="0" aria-label="Ampliar foto: Looks Completos">
           <img src="fotos/IMG_20260321_211742-card.webp" srcset="fotos/IMG_20260321_211742-500.webp 500w, fotos/IMG_20260321_211742-card.webp 753w" sizes="(max-width: 768px) calc(50vw - 26px), (max-width: 1111px) 380px, 270px" data-full="fotos/IMG_20260321_211742.webp" alt="Entrada da loja com manequins de vestido longo vinho e conjunto vermelho de blazer" loading="lazy">
           <div class="card-overlay"><span>Looks Completos</span></div>
         </div>
@@ -1207,7 +1209,7 @@
       </div>
 
       <div class="card hidden-card">
-        <div class="card-img">
+        <div class="card-img" role="button" tabindex="0" aria-label="Ampliar foto: Moda Casual">
           <img src="fotos/IMG_20251231_001305-card.webp" srcset="fotos/IMG_20251231_001305-500.webp 500w, fotos/IMG_20251231_001305-card.webp 753w" sizes="(max-width: 768px) calc(50vw - 26px), (max-width: 1111px) 380px, 270px" data-full="fotos/IMG_20251231_001305.webp" alt="Camisetas laranja, rosa e branca acima de calça jeans, calça caramelo e bermuda bege" loading="lazy">
           <div class="card-overlay"><span>Moda Casual</span></div>
         </div>
@@ -1215,7 +1217,7 @@
       </div>
 
       <div class="card hidden-card">
-        <div class="card-img">
+        <div class="card-img" role="button" tabindex="0" aria-label="Ampliar foto: Moda &amp; Estilo">
           <img src="fotos/IMG_20260321_211754-card.webp" srcset="fotos/IMG_20260321_211754-500.webp 500w, fotos/IMG_20260321_211754-card.webp 753w" sizes="(max-width: 768px) calc(50vw - 26px), (max-width: 1111px) 380px, 270px" data-full="fotos/IMG_20260321_211754.webp" alt="Camisetas vermelha, branca e amarela acima de bermudas verde, mostarda e laranja, ao lado de manequim de camiseta vinho" loading="lazy">
           <div class="card-overlay"><span>Moda &amp; Estilo</span></div>
         </div>
@@ -1223,7 +1225,7 @@
       </div>
 
       <div class="card hidden-card">
-        <div class="card-img">
+        <div class="card-img" role="button" tabindex="0" aria-label="Ampliar foto: Coleção Especial">
           <img src="fotos/IMG_20251231_001507-card.webp" srcset="fotos/IMG_20251231_001507-500.webp 500w, fotos/IMG_20251231_001507-card.webp 753w" sizes="(max-width: 768px) calc(50vw - 26px), (max-width: 1111px) 380px, 270px" data-full="fotos/IMG_20251231_001507.webp" alt="Bustos no balcão com conjunto branco e bolsa dourada de coração e camiseta branca com bermuda azul" loading="lazy">
           <div class="card-overlay"><span>Coleção Especial</span></div>
         </div>
@@ -1353,12 +1355,12 @@
 
 
 <!-- ===== LIGHTBOX (Modal de imagem ampliada) ===== -->
-<div class="lightbox" id="lightbox" aria-hidden="true">
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" aria-hidden="true">
   <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Foto anterior"><svg class="ico"><use href="#i-esq"/></svg></button>
   <div class="lightbox-inner">
     <button class="lightbox-close" id="lightboxClose" aria-label="Fechar imagem">×</button>
     <img class="lightbox-img" id="lightboxImg" src="" alt="">
-    <p class="lightbox-caption" id="lightboxCaption"></p>
+    <p class="lightbox-caption" id="lightboxCaption" aria-live="polite" aria-atomic="true"></p>
   </div>
   <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Próxima foto"><svg class="ico"><use href="#i-dir"/></svg></button>
 </div>
@@ -1517,7 +1519,7 @@
   }
 
   function openLightbox(imgEl) {
-    lastFocusedEl = document.activeElement;
+    lastFocusedEl = imgEl.closest('.card').querySelector('.card-img');
     fotos = Array.from(imgEl.closest('.gallery-grid').querySelectorAll('.card-img img'))
       .filter(img => img.closest('.card').offsetParent !== null);
     mostrarFoto(fotos.indexOf(imgEl));
@@ -1550,6 +1552,13 @@
     }
   });
 
+  document.addEventListener('keydown', (e) => {
+    const alvo = e.target.closest('.gallery-grid .card-img[role="button"]');
+    if (!alvo || (e.key !== 'Enter' && e.key !== ' ')) return;
+    e.preventDefault();
+    openLightbox(alvo.querySelector('img'));
+  });
+
   // Botão de fechar (×) e setas
   lightboxClose.addEventListener('click', closeLightbox);
   lightboxPrev.addEventListener('click', () => mostrarFoto(fotoAtual - 1));
@@ -1566,6 +1575,13 @@
   document.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('open')) return;
     if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'Tab') {
+      const focaveis = [lightboxPrev, lightboxClose, lightboxNext].filter(b => !b.hidden);
+      const i = focaveis.indexOf(document.activeElement);
+      const proximo = e.shiftKey ? (i <= 0 ? focaveis.length - 1 : i - 1) : (i === focaveis.length - 1 ? 0 : i + 1);
+      e.preventDefault();
+      focaveis[proximo].focus();
+    }
     if (e.key === 'ArrowLeft'  && fotos.length > 1) mostrarFoto(fotoAtual - 1);
     if (e.key === 'ArrowRight' && fotos.length > 1) mostrarFoto(fotoAtual + 1);
   });
