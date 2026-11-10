@@ -1394,6 +1394,20 @@
     hamburger.setAttribute('aria-expanded', 'false');
   }
 
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape' || !mobileMenu.classList.contains('open')) return;
+    const focoNoMenu = mobileMenu.contains(document.activeElement);
+    closeMenu();
+    if (focoNoMenu) hamburger.focus();
+  });
+
+  window.addEventListener('click', e => {
+    if (!mobileMenu.classList.contains('open') || e.target.closest('#mobileMenu, header')) return;
+    e.preventDefault();
+    e.stopPropagation();
+    closeMenu();
+  }, true);
+
   /* --- VER MAIS / ROUPAS --- */
   let expanded = false;
 
