@@ -1608,13 +1608,15 @@
       .filter(img => img.closest('.card').offsetParent !== null);
     mostrarFoto(fotos.indexOf(imgEl));
     lightboxPrev.hidden = lightboxNext.hidden = fotos.length < 2;
+    history.pushState({ foto: true }, '');
     lightbox.classList.add('open');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden'; // trava o scroll de fundo
     lightboxClose.focus();
   }
 
-  function closeLightbox() {
+  function closeLightbox(peloVoltar) {
+    if (peloVoltar !== true && history.state && history.state.foto) { history.back(); return; }
     lightbox.classList.remove('open');
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
@@ -1641,6 +1643,10 @@
     if (!alvo || (e.key !== 'Enter' && e.key !== ' ')) return;
     e.preventDefault();
     openLightbox(alvo.querySelector('img'));
+  });
+
+  window.addEventListener('popstate', () => {
+    if (lightbox.classList.contains('open')) closeLightbox(true);
   });
 
   // Botão de fechar (×) e setas
