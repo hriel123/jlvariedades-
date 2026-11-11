@@ -522,6 +522,7 @@
     font-size: 4.5rem;
     font-weight: 700;
     line-height: 1;
+    padding: 0 .06em .16em;
     background: linear-gradient(135deg, var(--rosa) 20%, var(--dourado));
     -webkit-background-clip: text;
     background-clip: text;
@@ -992,6 +993,12 @@
   }
   @media (min-width: 769px) {
     .mobile-menu { display: none; }
+    .sobre-visual { align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
+    .sobre-visual .big-num { font-size: clamp(6rem, 10vw, 9rem); }
+    .sobre-stats { margin-top: 1.4rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stat-card { padding: 1.5rem 1rem; }
+    .stat-num { font-size: clamp(1.9rem, 3vw, 2.5rem); white-space: nowrap; }
+    .stat-lbl { font-size: .9rem; }
   }
   @media(max-width:768px) {
     nav { display: none; }
