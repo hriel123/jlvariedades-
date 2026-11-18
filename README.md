@@ -36,6 +36,7 @@ index.html   página, com os estilos e os scripts embutidos
 fotos/       fotos dos produtos: <nome>-500.webp e <nome>-card.webp (cards) e <nome>.webp (ampliada)
 fonts/       fontes Playfair Display e DM Sans (licença SIL OFL 1.1)
 docs/        imagens deste README
+sitemap.xml  mapa do site para buscadores
 ```
 
 ### Adicionar uma foto nova
