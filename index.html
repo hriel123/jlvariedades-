@@ -824,7 +824,18 @@
   }
   footer a { display: inline-block; color: var(--rosa); transition: color .2s; }
   footer a:hover { color: #f27d91; }
-  a[href^="tel:"] { text-decoration: underline; text-underline-offset: 3px; }
+  .link-contato {
+    color: var(--rosa-texto);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: color .2s, text-decoration-color .2s;
+  }
+  .link-contato:hover { text-decoration-color: currentColor; }
+  .map-detail .link-contato, footer .link-contato { color: var(--rosa); }
+  .map-detail .link-contato:hover, footer .link-contato:hover { color: #f27d91; }
   .footer-logo {
     font-family: 'Playfair Display', serif;
     font-size: 1.6rem; font-weight: 700; color: var(--branco); margin-bottom: .75rem;
@@ -1177,14 +1188,14 @@
           <div>
             <p class="info-label">Horário</p>
             <p class="info-val">Segunda a sexta: <span class="nowrap">11h às 21h</span><br>Sábado: <span class="nowrap">8h às 21h30</span></p>
-            <p class="info-ref">Domingo fechado, exceto em datas especiais como o <span class="nowrap">Dia das Mães</span></p>
+            <p class="info-ref">Domingo fechado, exceto em datas especiais como feriados</p>
           </div>
         </div>
         <div class="sobre-info-item">
           <div class="info-icon"><svg class="ico"><use href="#i-tel"/></svg></div>
           <div>
             <p class="info-label">WhatsApp / Telefone</p>
-            <p class="info-val"><a href="tel:+5585988746915">(85) 98874-6915</a></p>
+            <p class="info-val"><a class="link-contato" href="tel:+5585988746915">(85) 98874-6915</a></p>
           </div>
         </div>
         <div class="sobre-info-item">
@@ -1409,11 +1420,11 @@
           </div>
           <div class="map-item">
             <span class="map-ico"><svg class="ico"><use href="#i-relogio"/></svg></span>
-            <div><strong>Horário</strong>Segunda a sexta: <span class="nowrap">11h às 21h</span><br>Sábado: <span class="nowrap">8h às 21h30</span><br>Domingo fechado, exceto em datas especiais como o <span class="nowrap">Dia das Mães</span></div>
+            <div><strong>Horário</strong>Segunda a sexta: <span class="nowrap">11h às 21h</span><br>Sábado: <span class="nowrap">8h às 21h30</span><br>Domingo fechado, exceto em datas especiais como feriados</div>
           </div>
           <div class="map-item">
             <span class="map-ico"><svg class="ico"><use href="#i-tel"/></svg></span>
-            <div><strong>WhatsApp</strong><a href="tel:+5585988746915">(85) 98874-6915</a></div>
+            <div><strong>WhatsApp</strong><a class="link-contato" href="tel:+5585988746915">(85) 98874-6915</a></div>
           </div>
           <div class="map-item">
             <span class="map-ico"><svg class="ico"><use href="#i-mail"/></svg></span>
@@ -1438,8 +1449,8 @@
     <a href="#avaliacoes">Avaliações</a>
     <a href="#contato">Contato</a>
   </div>
-  <p>R. Maj. Eng. José Goiânia Primo, 2932, Bairro Mutirão, <span class="nowrap">Cascavel-CE</span>, <span class="nowrap">62850-000</span> &nbsp;|&nbsp; <a href="tel:+5585988746915">(85) 98874-6915</a></p>
-  <p><a class="email" href="mailto:JJSJACILDA14@GMAIL.COM">JJSJACILDA14@GMAIL.COM</a></p>
+  <p>R. Maj. Eng. José Goiânia Primo, 2932, Bairro Mutirão, <span class="nowrap">Cascavel-CE</span>, <span class="nowrap">62850-000</span> &nbsp;|&nbsp; <a class="link-contato" href="tel:+5585988746915">(85) 98874-6915</a></p>
+  <p><a class="email link-contato" href="mailto:JJSJACILDA14@GMAIL.COM">JJSJACILDA14@GMAIL.COM</a></p>
   <p class="footer-copy">© 2026 JL Variedades. Todos os direitos reservados.</p>
 </footer>
 
