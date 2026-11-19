@@ -63,7 +63,8 @@
 <script>
   (function() {
     document.documentElement.classList.add('js');
-    var saved = localStorage.getItem('jl-theme');
+    var saved = null;
+    try { saved = localStorage.getItem('jl-theme'); } catch (e) {}
     if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.setAttribute('data-theme', 'dark');
   })();
 </script>
@@ -191,6 +192,11 @@
     line-height: 1;
   }
   .logo span { color: var(--rosa); }
+  .logo .logo-marca { color: inherit; }
+  .logo .logo-nome {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
 
   /* nav desktop */
   .nav-wrap { display: flex; align-items: center; gap: 1.75rem; }
@@ -818,7 +824,7 @@
   }
   footer a { display: inline-block; color: var(--rosa); transition: color .2s; }
   footer a:hover { color: #f27d91; }
-  footer a[href^="tel:"] { text-decoration: underline; text-underline-offset: 3px; }
+  a[href^="tel:"] { text-decoration: underline; text-underline-offset: 3px; }
   .footer-logo {
     font-family: 'Playfair Display', serif;
     font-size: 1.6rem; font-weight: 700; color: var(--branco); margin-bottom: .75rem;
@@ -986,6 +992,7 @@
     }
     .lightbox-prev { left: calc(50% - 56px); }
     .lightbox-next { right: calc(50% - 56px); }
+    footer { padding-bottom: 6rem; }
   }
   @media (max-height: 500px) {
     .lightbox { padding-top: .75rem; padding-bottom: .75rem; }
@@ -1093,7 +1100,7 @@
 
 <!-- ===== HEADER ===== -->
 <header>
-  <a class="logo" href="#inicio" aria-label="JL Variedades">JL<span>Variedades</span></a>
+  <a class="logo" href="#inicio"><span class="logo-marca" aria-hidden="true">JL<span>Variedades</span></span><span class="logo-nome">JL Variedades</span></a>
   <div class="nav-wrap">
     <nav>
       <ul>
@@ -1168,7 +1175,7 @@
           <div class="info-icon"><svg class="ico"><use href="#i-tel"/></svg></div>
           <div>
             <p class="info-label">WhatsApp / Telefone</p>
-            <p class="info-val">(85) 98874-6915</p>
+            <p class="info-val"><a href="tel:+5585988746915">(85) 98874-6915</a></p>
           </div>
         </div>
         <div class="sobre-info-item">
@@ -1305,7 +1312,7 @@
     </div><!-- /gallery -->
 
     <div class="ver-mais-wrap">
-      <button id="btn-ver-mais">
+      <button id="btn-ver-mais" aria-expanded="false">
         <span id="btn-icon"><svg class="ico"><use href="#i-baixo"/></svg></span>
         <span id="btn-texto">Ver mais peças</span>
       </button>
@@ -1393,7 +1400,7 @@
           </div>
           <div class="map-item">
             <span class="map-ico"><svg class="ico"><use href="#i-tel"/></svg></span>
-            <div><strong>WhatsApp</strong>(85) 98874-6915</div>
+            <div><strong>WhatsApp</strong><a href="tel:+5585988746915">(85) 98874-6915</a></div>
           </div>
           <div class="map-item">
             <span class="map-ico"><svg class="ico"><use href="#i-mail"/></svg></span>
@@ -1451,11 +1458,10 @@
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     if (isDark) {
       document.documentElement.removeAttribute('data-theme');
-      localStorage.setItem('jl-theme', 'light');
     } else {
       document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('jl-theme', 'dark');
     }
+    try { localStorage.setItem('jl-theme', isDark ? 'light' : 'dark'); } catch (e) {}
     marcarBotaoTema();
   });
 
@@ -1520,6 +1526,7 @@
 
     btnTexto.textContent = expanded ? 'Ver menos'  : 'Ver mais peças';
     btn.classList.toggle('aberto', expanded);
+    btn.setAttribute('aria-expanded', expanded);
     if (!expanded) window.scrollBy({ top: btn.getBoundingClientRect().top - topoAntes, behavior: 'instant' });
   }
   document.getElementById('btn-ver-mais').addEventListener('click', verMais);
