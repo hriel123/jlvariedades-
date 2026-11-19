@@ -1615,6 +1615,7 @@
       .filter(img => img.closest('.card').offsetParent !== null);
     mostrarFoto(fotos.indexOf(imgEl));
     lightboxPrev.hidden = lightboxNext.hidden = fotos.length < 2;
+    if (location.hash) history.replaceState(history.state, '', location.pathname + location.search);
     history.pushState({ foto: true }, '');
     lightbox.classList.add('open');
     lightbox.setAttribute('aria-hidden', 'false');
