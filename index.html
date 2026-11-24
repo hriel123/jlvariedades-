@@ -704,6 +704,8 @@
     to   { opacity: 1; transform: none; }
   }
   .stars-label { color: rgba(255,255,255,.62); font-size: .88rem; }
+  .stars-link { color: var(--dourado); font-size: .88rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+  .stars-link:hover { color: var(--branco); }
   .review-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem; margin-top: 3rem; }
   .review-card { flex: 1 1 260px; max-width: 350px; }
   .review-card {
@@ -1349,6 +1351,7 @@
     <div class="stars-container reveal">
       <div class="stars" role="img" aria-label="5 de 5 estrelas"><svg class="estrela"><use href="#i-estrela"/></svg><svg class="estrela"><use href="#i-estrela"/></svg><svg class="estrela"><use href="#i-estrela"/></svg><svg class="estrela"><use href="#i-estrela"/></svg><svg class="estrela"><use href="#i-estrela"/></svg></div>
       <p class="stars-label">Avaliação 5,0 de 5,0. Nossos clientes adoram!</p>
+      <a class="stars-link" href="https://maps.google.com/?cid=8681089682877155006" target="_blank" rel="noopener">Ver as avaliações no Google</a>
     </div>
     <div class="review-cards reveal" style="--d:.1s">
       <div class="review-card">
