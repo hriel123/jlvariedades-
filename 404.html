@@ -128,9 +128,11 @@
   </nav>
 </main>
 <script>
+  var loja = document.getElementById('link-loja');
   if (location.pathname.toLowerCase().indexOf('/jlvariedades-') === 0) {
-    var loja = document.getElementById('link-loja');
     loja.parentNode.insertBefore(loja, loja.parentNode.firstChild);
+  } else if (location.pathname.toLowerCase().indexOf('/portifolio') === 0) {
+    loja.remove();
   }
 </script>
 </body>
